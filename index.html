@@ -57,7 +57,7 @@ https://templatemo.com/tm-531-reflux
         </div>
       </div>
 
-      <section class="section about-me" data-section="section1">
+      <section class="section introduction" data-section="section1">
         <div class="container">
           <div class="section-heading">
             <h2>Introduction</h2>
@@ -82,7 +82,7 @@ https://templatemo.com/tm-531-reflux
         </div>
       </section>
 
-      <section class="section my-services" data-section="section2">
+      <section class="section research question" data-section="section2">
         <div class="container">
           <div class="section-heading">
             <h2>Research Question</h2>
@@ -103,7 +103,7 @@ https://templatemo.com/tm-531-reflux
         </div>
       </section>
 
-      <section class="section my-work" data-section="section3">
+      <section class="section method" data-section="section3">
         <div class="container">
           <div class="section-heading">
             <h2>Method</h2>
@@ -161,6 +161,8 @@ https://templatemo.com/tm-531-reflux
               <p>Different from the size of the input image in the original paper, that is 572 x 572 x 3, the size of the input image used in this project is 512 x 512 x 3, and other core components of the structure kept the same. The training was used 5,445 image tiles (about 90%) as the training dataset and 297 image tiles (about 10%) as the validation dataset and scheduled for 100 epochs with batch size 32. The loss function selected binary cross-entropy and used Adam as the optimizer. In order to have a better generalization result and prevent overfitting the training data, the model applied three techniques. First, dropout was set as 0.05 to randomly drop out neural nodes during training [<a href="https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf?utm_campaign=buffer&utm_content=buffer79b43&utm_medium=social&utm_source=twitter.com" target="_blank">12</a>, <a href="https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/" target="_blank">13</a>].
               Second, the training model automatically stopped when the value of the cost function for the cross-validation data did not improve over ten epochs [<a href="https://www.sciencedirect.com/science/article/pii/S0893608098000100" target="_blank">14</a>] Third, randomly given rotation angles, horizontal flip, and vertical flip were used in data augmentation [<a href="https://arxiv.org/abs/1712.04621" target="_blank">15</a>]. Only when the performance of the training data was the best, this model saved and used in the evaluation. </p>
               <p>Below is the code used to define the U-net model:</p>
+            </div>
+            <div class="code">
               <script src="https://gist.github.com/Chian-Yu/536f8b46fd2a33e42387597512ecb5bc.js"></script>
             </div>
             <hr>
@@ -200,7 +202,7 @@ https://templatemo.com/tm-531-reflux
         </div>
       </section>
 
-      <section class="section contact-me" data-section="section4">
+      <section class="section discussion" data-section="section4">
         <div class="container">
           <div class="section-heading">
             <h2>Discussion</h2>
@@ -356,7 +358,7 @@ https://templatemo.com/tm-531-reflux
                 </div>
 
                 <h5><b>The generalization from 1:50k to 1:100k</b></h5>
-                <p>The 1:100k generalized results' quality comparison is shown in Table 3. In general, both the deep learning model and the ArcGIS tools performed worse in this map scale, only the eliminating technique had a moderate performance.</p>
+                <p>The 1:100k generalized results' quality comparison is shown in Table 4. In general, both the deep learning model and the ArcGIS tools performed worse in this map scale, only the eliminating technique had a moderate performance.</p>
                 <p style="text-align:center;">Table 4. Quality Comparison of 1:100k result by building generalization process.</p>
                 <table>
                   <tr>
@@ -446,19 +448,50 @@ https://templatemo.com/tm-531-reflux
                 <h5><b>The Answer to the Research Question 1</b></h5>
                 <li style="margin-top: 20px;">Is deep learning able to produce appropriate simplification for building both in urban and rural areas?
                 </li>
-                <p style="margin-left : 2em;"><b style="font-size: 18px;">In general, the anwer is yes! </b>The deep learning model could read the context, recognized the urban and the rural areas, according to different situations separately executed different generalized techniques then produced generalized results. <b style="font-size: 18px;">But in the same size of the training dataset, the deep learning model has a better prediction on the generalization form 1:25k to 1:50k.</b></p>
+                <p style="margin-left : 2em;">In general, the anwer is yes! The deep learning model could read the context, recognized the urban and the rural areas, according to different situations separately executed different generalized techniques then produced generalized results. But in the same size of the training dataset, the deep learning model has a better prediction on the generalization form 1:25k to 1:50k.</p>
                 <p style="margin-left : 2em;">For the 1:25k to 1:50k generalized model, most too-small buildings were removed, neighbouring buildings were merged, although the displacing and exaggerating techniques still need to improve, the simplification for buildings is appropriate.</p>
                 <p style="margin-left : 2em;">For the 1:50k to 1:100k generalized model, parts of the too-small buildings were removed, needed to be merged buildings could be detected, but most of the edge of the buildings are blurred, which is unacceptable for the generalized requirements. Therefore, in the smaller map scale's generalization, the model still needs to import more data to provide sufficient information.</p>
                 <h5><b>The Answer to the Research Question 2</b></h5>
-                <p>
-                  <li>Is deep learnings able to correctly generate rule-based and non-rule-based generalizations?</li><br>
-
-                </p>
+                <li style="margin-top: 20px;">Is deep learnings able to correctly generate rule-based and non-rule-based generalizations?</li>
+                <p style="margin-left : 2em;">In general, the anwer is yes! But the rule-based generalized results is better than non-rule-based results.</p>
+                <p style="margin-left : 2em;">That is because the non-rule-based generalization is more complicated and often involves the meaning that humans gave to the features. Without giving the attribute data, although the deep learning model could speculate the meaning by the context, it might still have a certain rate of error and uncertainty.</p>
+                <p style="margin-left : 2em;">Such as the exaggerating technique, which is the none-rule-based generalized technique, used to preserve and exaggerate the important building. But because the meaning of importance was given by humans, and it usually needed to consider other features to define, such as road, river, or its attribute data, which caused the model to be hard to correctly predict.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <section class="section conclusion" data-section="section5">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Conclusion</h2>
+            <div class="line-dec"></div>
+          </div>
+          <div class="left-image-post">
+            <div class="row">
+              <h4>There is a Long Way to Put into Real Utilize</h4>
+              <p>In conclusion, this project aims to utilize deep learning to generalize the building in the area that both contain rural and urban.The project comfirmed that both two-scale could generate rule-based and non-rule-based results, but the rule-based result performed better than the non-rule -based results. The 1:25k to 1:50k generalization model could produce appropriate simplification, but 1:50k to 1:100k still needs to be promoted.That is to say, the deep learning generalization algorithm has the ability to deal with a complicated cartographic problem and has the potential to resolve the problems in automatic generalization in the future. But being able to put it into action still has a long way to go.</p>
+              <h4>Future Works</h4>
+              <h5><b>Importing More Training Data into the Deep Learning Model</b></h5>
+              <p>By the evaluation result of the 1:100k outputs, it shows that the  1:50k to 1:100k generalized model is still needed to promote. It might need more data to improve the loos and the accuracy. In order to produce the acceptable outputs for this map scale I will try to use a larger size of training dataset to build and test the model again.</p>
+              <h5><b>Vectorization for Output Images</b></h5>
+              <p>Because this work is utilized image segmentation and recognition techniques in deep learning to realize learning human cartographer's generalized process, the inputs and outputs are in raster format. But the output data is still needed to be edited. Therefore, I will try to transform raster outputs to vector format. </p>
+              <h5><b>Using Multiple Features images to Train</b></h5>
+              <p>As the comparing results of displacing technique show that with only the building features images, the deep learning model was unable to predict the right generalized results. I will try using multiple features images as the training dataset to test the performance of this technique.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section Acknowledgements" data-section="section6">
+        <div class="section-heading">
+          <h2>Acknowledgements</h2>
+          <div class="line-dec"></div>
+        </div>
+        My sincere thanks go to Professor Jim Thatcher for guiding this work, and Professor Luke Bergmann for programming suggestions. I also thank the 401st Plant, Materiel Production Center, Armaments Bureau, MND., R.O.C. for sponsoring my tuition to finish the whole program, and thanks to all my colleagues and supervisor for their advice and supports.
+      </section>
+
     </div>
 
     <!-- Scripts -->
