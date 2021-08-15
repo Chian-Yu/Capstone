@@ -266,6 +266,7 @@ https://templatemo.com/tm-531-reflux
               </div>
               <div class="Qualitative evaluation" style="padding:40px 0px;">
                 <h4>Qualitative Evaluation</h4>
+                <h5><b>The generalization from 1:25k to 1:50k</b></h5>
                 <p>The 1:50k generalized result’s quality comparison is shown in Table 3. In general, both the deep learning model and the ArcGIS tools performed well with the eliminating techniques, they successfully removed most small buildings; and performed worse with the exaggerating and displacing techniques, some buildings that should be exaggerated ended up being removed, and buildings that should be adjusted the displacement could not be detected. In urban areas, the deep learning model performed well than the ArcGIS tools; in rural areas, the grade of the two generalized results are similar.</p>
                 <p style="text-align:center;">Table 3. Quality Comparison of 1:50k result by building generalization process.</p>
                 <table>
@@ -342,7 +343,6 @@ https://templatemo.com/tm-531-reflux
                   <img src="assets\images\fig11.png" alt="The results of 1:50k in urban areas.">
                   <p style="text-align:center;">Figure 11. The results of 1:50k in urban areas.</p>
                 </div>
-
                 <div class="evaluate">
                   <p style="margin-top: 20px;">Figure 12 shows the results of 1:50k in rural areas, in general, the results of the deep learning model and the ArcGIS tools are similar, detailed qualitative evaluation of the figure demonstrates below:
                     <li><b style="color:yellow;">Eliminate: </b> Both the deep learning model and the ArcGIS tools worked well was able to remove the too-small buildings.</li>
@@ -355,10 +355,9 @@ https://templatemo.com/tm-531-reflux
                   <p style="text-align:center;">Figure 12. The results of 1:50k in rural areas.</p>
                 </div>
 
-
-
-
-                <p style="text-align:center;">Table 3. Quality Comparison of 1:50k result by building generalization process.</p>
+                <h5><b>The generalization from 1:50k to 1:100k</b></h5>
+                <p>The 1:100k generalized results' quality comparison is shown in Table 3. In general, both the deep learning model and the ArcGIS tools performed worse in this map scale, only the eliminating technique had a moderate performance.</p>
+                <p style="text-align:center;">Table 4. Quality Comparison of 1:100k result by building generalization process.</p>
                 <table>
                   <tr>
                     <th>Process</th>
@@ -369,23 +368,23 @@ https://templatemo.com/tm-531-reflux
                   <tr>
                     <th rowspan="2">Eliminate</th>
                     <td>Urban</td>
-                    <td>Very Good</td>
-                    <td>Very Good</td>
+                    <td>Fair</td>
+                    <td>Fair</td>
                   </tr>
                   <tr>
                     <td>Rural</td>
-                    <td>Very Good</td>
-                    <td>Very Good</td>
+                    <td>Fair</td>
+                    <td>Fair</td>
                   </tr>
                   <tr>
                     <th rowspan="2">Exaggerate</th>
                     <td>Urban</td>
-                    <td>Poor</td>
-                    <td>Very Poor</td>
+                    <td>Unknown</td>
+                    <td>Unknown</td>
                   </tr>
                   <tr>
                     <td>Rural</td>
-                    <td>Very Poor</td>
+                    <td>Poor</td>
                     <td>Very Poor</td>
                   </tr>
                   <tr>
@@ -402,27 +401,54 @@ https://templatemo.com/tm-531-reflux
                   <tr>
                     <th rowspan="2">Simplify</th>
                     <td>Urban</td>
-                    <td>Fair</td>
-                    <td>Fair</td>
-                  </tr>
-                  <tr>
-                    <td>Rural</td>
-                    <td>Fair</td>
-                    <td>Fair</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2">Merge</th>
-                    <td>Urban</td>
-                    <td>Good</td>
+                    <td>Very Poor</td>
                     <td>Very Poor</td>
                   </tr>
                   <tr>
                     <td>Rural</td>
+                    <td>Unknown</td>
+                    <td>Unknown</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Merge</th>
+                    <td>Urban</td>
+                    <td>Very Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Very Poor</td>
                     <td>Poor</td>
-                    <td>Fair</td>
                   </tr>
                 </table>
-                <h5><b></b></h5>
+
+                <div class="evaluate">
+                  <p style="margin-top: 40px;">Figure 13 shows the results of 1:100k in urban areas, detailed qualitative evaluation of the figure demonstrates below:
+
+                    In the simplifying technique (as the blue block shown),
+                    <li><b style="color:yellow;">Eliminate: </b> Both the deep learning model and the ArcGIS tools had a moderate performance, they were able to remove the too-small buildings, but some of the buildings were wrongly preserved.</li>
+                    <li><b style="color:orange;">Displace: </b>Both the deep learning model and the ArcGIS tools had a bad performance. The buildings that needed to adjust the displacement could not be detected, the reason is as the discussion of the 1:50k urban areas.</li>
+                    <li><b style="color:red;">Exaggerate: </b> Because in this scales, most building features were dense, seldom of them used this technique. In the test area, no buildings used this technique. </li>
+                    <li><b style="color:green;">Merge: </b> The deep learning model could detect which buildings needed to be merged, but the shape and the edge performed very worse. That is to say, the deep learning model was able to execute this technique but unable to predict the edge of the building, it might need to import more training data to have a better prediction. The ArcGIS tools merged the neighbouring buildings which distance was smaller than the given parameter. But without considering the content around, it missed some buildings that needed to be merged and wrongly merged some unneeded to be merged.</li>
+                    <li><b style="color:blue;">Simplify: </b> For the deep learning model, the result is similar to the merging technique, being able to detect but having poor performance on the edge and the shape. For the ArcGIS tools, it simplified the edge but was still too complicated by comparing to the target data.</li>
+                  </p>
+                  <img src="assets\images\fig13.png" alt="The results of 1:100k in urban areas.">
+                  <p style="text-align:center;">Figure 13. The results of 1:100k in urban areas.</p>
+                </div>
+                <div class="evaluate">
+                  <p style="margin-top: 20px;">Figure 14 shows the results of 1:100k in urban areas, detailed qualitative evaluation of the figure demonstrates below:
+
+                    In the simplifying technique (as the blue block shown),
+                    <li><b style="color:yellow;">Eliminate: </b> Both the deep learning model and the ArcGIS tools had a moderate performance, they were able to remove the too-small buildings, but some of the buildings were wrongly preserved.</li>
+                    <li><b style="color:orange;">Displace: </b>Both the deep learning model and the ArcGIS tools had a bad performance. The buildings that needed to adjust the displacement could not be detected, the reason is as the discussion of the 1:50k urban areas.</li>
+                    <li><b style="color:red;">Exaggerate: </b> Because in this scales, most building features were dense, seldom of them used this technique. In the test area, no buildings used this technique. </li>
+                    <li><b style="color:green;">Merge: </b> The deep learning model could detect which buildings needed to be merged, but the shape and the edge performed very worse. That is to say, the deep learning model was able to execute this technique but unable to predict the edge of the building, it might need to import more training data to have a better prediction. The ArcGIS tools merged the neighbouring buildings which distance was smaller than the given parameter. But without considering the content around, it missed some buildings that needed to be merged and wrongly merged some unneeded to be merged.</li>
+                    <li><b style="color:blue;">Simplify: </b> For the deep learning model, the result is similar to the merging technique, being able to detect but having poor performance on the edge and the shape. For the ArcGIS tools, it simplified the edge but was still too complicated by comparing to the target data.</li>
+                  </p>
+                  <img src="assets\images\fig14.png" alt="The results of 1:100k in rural areas.">
+                  <p style="text-align:center;">Figure 14. The results of 1:100k in rural areas.</p>
+                </div>
+
               </div>
             </div>
           </div>
