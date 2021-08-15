@@ -207,8 +207,9 @@ https://templatemo.com/tm-531-reflux
           <div class="row">
             <div class="right-content">
               <div class="Quantitative evaluation">
-                <h4>Quantitative evaluation</h4>
-                <p>Below is the result for the deep learning model.In general, the loss and accuracy of generalization from 1:25k to 1:50k are better than generalization from 1:50k to 1:100k, the difference of the loss between them is about 5%, and the accuracy is about 2%. This showed that in the smaller scale generalization process, the variability is larger, and harder for the model to detect. Each of the models took about 30 minutes to train, and 5 minutes to predict and save the result.</p>
+                <h4>Quantitative Evaluation</h4>
+                <p>Table 2 is the result for the deep learning model.In general, the loss and accuracy of generalization from 1:25k to 1:50k are better than generalization from 1:50k to 1:100k, the difference of the loss between them is about 5%, and the accuracy is about 2%. This showed that in the smaller scale generalization process, the variability is larger, and harder for the model to detect. Each of the models took about 30 minutes to train, and 5 minutes to predict and save the result.</p>
+                <p style="text-align: center;">Table 2. Comparison of the loss and the accuracy values for each data in two model.</p>
                 <table>
                   <tr>
                     <th>Scales</th>
@@ -250,69 +251,150 @@ https://templatemo.com/tm-531-reflux
                   </tr>
                 </table>
                 <p style="padding: 10px 0px;">The accuracy and the loss for each epoch of the two models are shown in Figure 7 to 10. In general, the loss curve of both models is in a smooth descend without large noise and finally maintains a stable value, which means that both models have a good fit[<a href="https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/" target="_blank">15</a>]. For the accuracy curve, the generalization from 1:50k to 1:100k has a large noise during the training, which might be because the training dataset has a larger variability between the ungeneralised data and the generalized data or needed more data to train.</p>
+                <img src="assets\images\25to50acc.png" alt="1:25k to 1:50k accuaacy">
+                <p style="text-align: center">Figure 7. The accuracy curve of the generalization from 1:25k to 1:50k.</p>
+                <img src="assets\images\25to50loss.png" alt="1:25k to 1:50k loss">
+                <p style="text-align: center">Figure 8. The loss curve of the generalization from 1:25k to 1:50k.</p>
+                <img src="assets\images\50to100acc.png" alt="1:50k to 1:100k accuracy">
+                <p style="text-align: center">Figure 9. The accuracy curve of the generalization from 1:50k to 1:100k.</p>
+                <img src="assets\images\50to100loss.png" alt="1:50k to 1:100k loss">
+                <p style="text-align: center">Figure 10. The loss curve of the generalization from 1:50k to 1:100k.</p>
 
               </div>
-              <!-- <div class="container">
-                <form id="contact" action="" method="post">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <fieldset>
-                        <input
-                          name="name"
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          placeholder="Your name..."
-                          required=""
-                        />
-                      </fieldset>
-                    </div>
-                    <div class="col-md-6">
-                      <fieldset>
-                        <input
-                          name="email"
-                          type="text"
-                          class="form-control"
-                          id="email"
-                          placeholder="Your email..."
-                          required=""
-                        />
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <input
-                          name="subject"
-                          type="text"
-                          class="form-control"
-                          id="subject"
-                          placeholder="Subject..."
-                          required=""
-                        />
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <textarea
-                          name="message"
-                          rows="6"
-                          class="form-control"
-                          id="message"
-                          placeholder="Your message..."
-                          required=""
-                        ></textarea>
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="button">
-                          Send Message
-                        </button>
-                      </fieldset>
-                    </div>
-                  </div>
-                </form>
-              </div> -->
+              <div class="Qualitative evaluation" style="padding:40px 0px;">
+                <h4>Qualitative Evaluation</h4>
+                <p>The 1:50k generalized result’s quality comparison is shown in Table 3. In general, both the deep learning model and the ArcGIS tools performed well with the eliminating techniques, they successfully removed most small buildings; and performed worse with the exaggerating and displacing techniques, some buildings that should be exaggerated ended up being removed, and buildings that should be adjusted the displacement could not be detected. In urban areas, the deep learning model performed well than the ArcGIS tools; in rural areas, the grade of the two generalized results are similar.</p>
+                <p style="text-align:center;">Table 3. Quality Comparison of 1:50k result by building generalization process.</p>
+                <table>
+                  <tr>
+                    <th>Process</th>
+                    <th>Area</th>
+                    <th>Deep learning</th>
+                    <th>ArcGIS</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Eliminate</th>
+                    <td>Urban</td>
+                    <td>Very Good</td>
+                    <td>Very Good</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Very Good</td>
+                    <td>Very Good</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Exaggerate</th>
+                    <td>Urban</td>
+                    <td>Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Very Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Displace</th>
+                    <td>Urban</td>
+                    <td>Very Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Unknown</td>
+                    <td>Unknown</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Simplify</th>
+                    <td>Urban</td>
+                    <td>Fair</td>
+                    <td>Fair</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Fair</td>
+                    <td>Fair</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Merge</th>
+                    <td>Urban</td>
+                    <td>Good</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Poor</td>
+                    <td>Fair</td>
+                  </tr>
+                </table>
+                <p style="padding: 10px 0px">Figure 11 shows the results of 1:50k in urban areas. In general, both the deep learning model and the ArcGIS tools had a great performance in eliminating technique (as the yellow block shown), both of them were above to remove the too-small buildings; and had a bad performance in displacing technique (as the orange block shown), buildings that needed to be adjusted could not be detected. For the deep learning model, the reason might be because the training data only had the building features. The displacing technique had relationships with other features, thus, without other features, the deep learning model could not learn this technique. For the ArcGIS tools, although the barrier features were imported, the displacement distance could not be set, so the model could not exactly predict the results. In exaggerating (as the red blocks shown), the deep learning model could detect some needed to be exaggerated, but the edge and the shape of the buildings performed worse, the exaggeration degree was not enough, the angle was rounded, and the edge was blurred. For the ArcGIS tools, because without this function, buildings that needed to be exaggerated preserved original areas. In the merging technique (as the green blocks shown), the deep learning model had a better performance than the ArcGIS tools. In the merging technique, both the deep learning model and the ArcGIS tools missed some buildings that needed to be merged, but the ArcGIS tools wrongly merged some buildings that are unneeded to be merged. As for simplifying technique (as the blue block shown), because the maps might not be produced by the same person, each person’s own aesthetics could lead to different results, the shape of buildings could not totally match the target image.  </p>
+                <p style="text-align:center;">Table 3. Quality Comparison of 1:50k result by building generalization process.</p>
+                <table>
+                  <tr>
+                    <th>Process</th>
+                    <th>Area</th>
+                    <th>Deep learning</th>
+                    <th>ArcGIS</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Eliminate</th>
+                    <td>Urban</td>
+                    <td>Very Good</td>
+                    <td>Very Good</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Very Good</td>
+                    <td>Very Good</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Exaggerate</th>
+                    <td>Urban</td>
+                    <td>Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Very Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Displace</th>
+                    <td>Urban</td>
+                    <td>Very Poor</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Unknown</td>
+                    <td>Unknown</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Simplify</th>
+                    <td>Urban</td>
+                    <td>Fair</td>
+                    <td>Fair</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Fair</td>
+                    <td>Fair</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">Merge</th>
+                    <td>Urban</td>
+                    <td>Good</td>
+                    <td>Very Poor</td>
+                  </tr>
+                  <tr>
+                    <td>Rural</td>
+                    <td>Poor</td>
+                    <td>Fair</td>
+                  </tr>
+                </table>
+                <h5><b></b></h5>
+              </div>
             </div>
           </div>
         </div>
