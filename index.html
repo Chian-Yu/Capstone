@@ -114,8 +114,8 @@ https://templatemo.com/tm-531-reflux
             <div class="Data Gathering and Preparation">
               <h4>Data Gathering and Preparation</h4>
               <h5><b>Map Scales</b></h5>
-              <p>This project executed two map scales generalization, from 1:25k to 1:50k, and from 1:50k to 100k, so there are three scales maps needed to be gathered.</p>
-              <p style="text-align: center; color: rgba(255,255,255,0.5); line-height: 5px;">The needed map scales for each model</p>
+              <p>This project executed two map scales generalization, from 1:25k to 1:50k, and from 1:50k to 100k, so there are three scales maps needed to be gathered. Table 1 shows the needed map scales for each model.</p>
+              <p style="text-align: center; ">Table 1. The needed map scales for each model.</p>
               <table>
                 <tr>
                   <th colspan="2">Dataset</th>
@@ -147,18 +147,19 @@ https://templatemo.com/tm-531-reflux
               <h5 style="padding: 30px 0px 0px 0px"><b>Data Sources</b></h5>
               <p>The used maps were Taiwan Mid-to-small Topographic Maps which were published in 2018 and manually generalized by human cartographers. All maps can be downloaded at <a href="https://maps.nlsc.gov.tw/MbIndex_qryPage.action?fun=8" target="_blank">the National Land Surveying and Mapping Center Taiwan MAP Service</a>. As the maps are provided in vector format, they were be rasterized in 1 m × 1 m grids image.</p>
               <h5><b>Select Areas</b></h5>
-              <p>The selected area is around Taichung City, Taiwan that covers both urban areas and rural areas. This area was generated into a 50,893 pixel × 29,696 pixel building map and partitioned into 5,742 tiles (512pixel × 512 pixel) without overlaps. The blue block area is used in the training process, and the red block area is used for testing. Red block is adjacent and without any overlap to the blue block.</p>
+              <p>The selected area is around Taichung City, Taiwan (shown as Figure 1) that covers both urban areas and rural areas. This area was generated into a 50,893 pixel × 29,696 pixel building map and partitioned into 5,742 tiles (512pixel × 512 pixel) without overlaps. The blue block area is used in the training process, and the red block area is used for testing. Red block is adjacent and without any overlap to the blue block.</p>
               <img src="assets\images\selectarea.png" alt="Select area">
+              <p style="text-align: center; line-height: 5px;">Figure 1. The select area of the model.</p>
             </div>
             <div class="Developing U-net Structure and Training" style="padding:40px 0px;">
               <h4>Developing U-net Structure and Training</h4>
               <h5><b>U-net Structure</b></h5>
-              <p>U-net [<a href="https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28">11</a>] structure is a convolutional network architecture that is firstly applied in biomedical image segmentation with binary labels. It is symmetric and can be divided into an encoder-decoder path.The encoder path is the left half in the architecture diagram. Each layer consists of two repeated applications of 3 x 3 convolutions and rectified linear unit (ReLU), followed by a 2 x 2 max-pooling for downsampling. In this process, it extracts more feature channels and reduces the size of the image. The decoder path is the right half, each layer consisted of a 2 x 2 up-convolution for upsampling, followed by two 3 x 3 convolutions, which each followed by a ReLU. In this process, it reduces the feature channels and recovers the size of the image.</p>
+              <p>U-net [<a href="https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28">11</a>] structure (shown as Figure 2) is a convolutional network architecture that is firstly applied in biomedical image segmentation with binary labels. It is symmetric and can be divided into an encoder-decoder path.The encoder path is the left half in the architecture diagram. Each layer consists of two repeated applications of 3 x 3 convolutions and rectified linear unit (ReLU), followed by a 2 x 2 max-pooling for downsampling. In this process, it extracts more feature channels and reduces the size of the image. The decoder path is the right half, each layer consisted of a 2 x 2 up-convolution for upsampling, followed by two 3 x 3 convolutions, which each followed by a ReLU. In this process, it reduces the feature channels and recovers the size of the image.</p>
               <img src="assets\images\unet.png" alt="U-net Structure">
-              <p style="text-align: center; color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" target="_blank">https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/</a></p>
+              <p style="text-align: center; ">Figure 2. U-net Structure. Sources:<a href="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" target="_blank">https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/</a></p>
               <p>Different from the size of the input image in the original paper, that is 572 x 572 x 3, the size of the input image used in this project is 512 x 512 x 3, and other core components of the structure kept the same. The training was used 5,445 image tiles (about 90%) as the training dataset and 297 image tiles (about 10%) as the validation dataset and scheduled for 100 epochs with batch size 32. The loss function selected binary cross-entropy and used Adam as the optimizer. In order to have a better generalization result and prevent overfitting the training data, the model applied three techniques. First, dropout was set as 0.05 to randomly drop out neural nodes during training [<a href="https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf?utm_campaign=buffer&utm_content=buffer79b43&utm_medium=social&utm_source=twitter.com" target="_blank">12</a>, <a href="https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/" target="_blank">13</a>].
               Second, the training model automatically stopped when the value of the cost function for the cross-validation data did not improve over ten epochs [<a href="https://www.sciencedirect.com/science/article/pii/S0893608098000100" target="_blank">14</a>] Third, randomly given rotation angles, horizontal flip, and vertical flip were used in data augmentation [<a href="https://arxiv.org/abs/1712.04621" target="_blank">15</a>]. Only when the performance of the training data was the best, this model saved and used in the evaluation. </p>
-              <p>Code used to define the U-net model:</p>
+              <p>Below is the code used to define the U-net model:</p>
               <script src="https://gist.github.com/Chian-Yu/536f8b46fd2a33e42387597512ecb5bc.js"></script>
             </div>
             <div class="Generating Control Group">
@@ -167,15 +168,15 @@ https://templatemo.com/tm-531-reflux
               <h5><b>Delineate Built-Up Area</b></h5>
               <p>This tool is used to merge densely clustered buildings into a large building polygon. Buildings in the input features layer are clustered together according to the giving grouping distance parameter, then merges the clustered buildings into a new building polygon. It has a better performance on merge neighbouring buildings, but in the simplifying of the edge of the building performed badly.</p>
               <img src="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/GUID-B21B9F22-61A8-4975-85D4-9B68C8850228-web.png" alt="Delineate Built-Up Area example">
-              <p style="color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/delineate-built-up-areas.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/delineate-built-up-areas.htm</a></p>
+              <p style="text-align: center">Figure 3. Delineate built-Up area example. Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/delineate-built-up-areas.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/delineate-built-up-areas.htm</a></p>
               <h5><b>Aggregate Polygons</b></h5>
               <p>The use of Aggregate Polygons is similar to Delineate Built-Up Area. By giving the aggregation distance value, the tool merges the neighbouring building that closer than the given distance together. But the orthogonality option and the function of importing barrier features, make this tool have a better performance of the simplifying edge, and avoid merging the neighbouring buildings that have barriers across.</p>
               <img src="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/GUID-7C771F8C-2E59-4DE5-9E46-E74A1586346D-web.gif" alt="Aggregate Polygons example">
-              <p style="color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/aggregate-polygons.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/aggregate-polygons.htm</a></p>
+              <p style="text-align: center">Figure 4. Aggregate polygons example. Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/aggregate-polygons.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/aggregate-polygons.htm</a></p>
               <h5><b>Simplify Building</b></h5>
               <p>This tool is used to simplify the boundary of building polygons and keep the essential shape and size of the buildings, and with the optional minimum area parameter to delete the small buildings. It has a great performance on simplification the edge of the buildings, but it did not have the function to merge the building together.</p>
               <img src="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/GUID-46B1682E-6993-47D0-AAED-A7D5F0F3669A-web.gif" alt="Simplify Building example">
-              <p style="color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm</a></p>
+              <p style="text-align: center">Figure 5. Simplify building example. Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm</a></p>
               <p>Each tool has its own advantages and disadvantages, but none of them can contain all the process in the building generalization. Thus, this project used two tools to produce generalized results. First using Aggregate Polygons to merge the neighbouring building, then and Simplify Building to have a better simplified edge and eliminate small buildings.</p>
             </div>
             <div class="Evaluation" style="padding:40px 0px;">
@@ -188,6 +189,7 @@ https://templatemo.com/tm-531-reflux
               <p>The process of building generalization：<br>
               It involves removing too small buildings (eliminate), adjusting the location of buildings to avoid being too close to other features (displace), replacing neighboring buildings into a larger one (merge), enlarging the small building to ensure it is legible (exaggerate), simplifying the edge of the building to make it appear less cluttered (simplify).</p>
               <img src="assets\images\process.png" alt="The process of building generalization">
+              <p style="text-align: center">Figure 6. Five techniques of building generalization.</p>
               <p>Then visually examining and qualitatively describing each the compare item in urban and the rural areas in the two scales separately, illustrating the generalized situation and exploring the reason for the inappropriate generalized results.</p>
             </div>
 
@@ -247,6 +249,7 @@ https://templatemo.com/tm-531-reflux
                     <td>0.9591</td>
                   </tr>
                 </table>
+                <p style="padding: 10px 0px;">The accuracy and the loss for each epoch of the two models are shown in Figure 7 to 10. In general, the loss curve of both models is in a smooth descend without large noise and finally maintains a stable value, which means that both models have a good fit[<a href="https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/" target="_blank">15</a>]. For the accuracy curve, the generalization from 1:50k to 1:100k has a large noise during the training, which might be because the training dataset has a larger variability between the ungeneralised data and the generalized data or needed more data to train.</p>
 
               </div>
               <!-- <div class="container">
