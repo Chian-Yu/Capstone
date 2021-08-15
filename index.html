@@ -204,6 +204,51 @@ https://templatemo.com/tm-531-reflux
           </div>
           <div class="row">
             <div class="right-content">
+              <div class="Quantitative evaluation">
+                <h4>Quantitative evaluation</h4>
+                <p>Below is the result for the deep learning model.In general, the loss and accuracy of generalization from 1:25k to 1:50k are better than generalization from 1:50k to 1:100k, the difference of the loss between them is about 5%, and the accuracy is about 2%. This showed that in the smaller scale generalization process, the variability is larger, and harder for the model to detect. Each of the models took about 30 minutes to train, and 5 minutes to predict and save the result.</p>
+                <table>
+                  <tr>
+                    <th>Scales</th>
+                    <th>Dataset</th>
+                    <th>Loss</th>
+                    <th>Accuracy</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="3">25k</th>
+                    <td>Training</td>
+                    <td>0.0477</td>
+                    <td>0.9848</td>
+                  </tr>
+                  <tr>
+                    <td>Validation</td>
+                    <td>0.0417</td>
+                    <td>0.9867</td>
+                  </tr>
+                  <tr>
+                    <td>Test</td>
+                    <td>0.0434</td>
+                    <td>0.9886</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="3">50k</th>
+                    <td>Training</td>
+                    <td>0.1046</td>
+                    <td>0.9610</td>
+                  </tr>
+                  <tr>
+                    <td>Validation</td>
+                    <td>0.1009</td>
+                    <td>0.9618</td>
+                  </tr>
+                  <tr>
+                    <td>Test</td>
+                    <td>0.1005</td>
+                    <td>0.9591</td>
+                  </tr>
+                </table>
+
+              </div>
               <!-- <div class="container">
                 <form id="contact" action="" method="post">
                   <div class="row">
