@@ -151,7 +151,8 @@ https://templatemo.com/tm-531-reflux
               <img src="assets\images\selectarea.png" alt="Select area">
               <p style="text-align: center; line-height: 5px;">Figure 1. The select area of the model.</p>
             </div>
-            <div class="Developing U-net Structure and Training" style="padding:40px 0px;">
+            <hr>
+            <div class="Developing U-net Structure and Training">
               <h4>Developing U-net Structure and Training</h4>
               <h5><b>U-net Structure</b></h5>
               <p>U-net [<a href="https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28">11</a>] structure (shown as Figure 2) is a convolutional network architecture that is firstly applied in biomedical image segmentation with binary labels. It is symmetric and can be divided into an encoder-decoder path.The encoder path is the left half in the architecture diagram. Each layer consists of two repeated applications of 3 x 3 convolutions and rectified linear unit (ReLU), followed by a 2 x 2 max-pooling for downsampling. In this process, it extracts more feature channels and reduces the size of the image. The decoder path is the right half, each layer consisted of a 2 x 2 up-convolution for upsampling, followed by two 3 x 3 convolutions, which each followed by a ReLU. In this process, it reduces the feature channels and recovers the size of the image.</p>
@@ -162,6 +163,7 @@ https://templatemo.com/tm-531-reflux
               <p>Below is the code used to define the U-net model:</p>
               <script src="https://gist.github.com/Chian-Yu/536f8b46fd2a33e42387597512ecb5bc.js"></script>
             </div>
+            <hr>
             <div class="Generating Control Group">
               <h4>Generating Control Group</h4>
               <p>The commercial generalization software used in this project is ArcGIS (Version 10.8.1). ArcGIS has three generalized tools, “Delineate Built-Up Area”, "Aggregate Polygons", and “Simplify Building”.</p>
@@ -179,13 +181,14 @@ https://templatemo.com/tm-531-reflux
               <p style="text-align: center">Figure 5. Simplify building example. Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm</a></p>
               <p>Each tool has its own advantages and disadvantages, but none of them can contain all the process in the building generalization. Thus, this project used two tools to produce generalized results. First using Aggregate Polygons to merge the neighbouring building, then and Simplify Building to have a better simplified edge and eliminate small buildings.</p>
             </div>
-            <div class="Evaluation" style="padding:40px 0px;">
+            <hr>
+            <div class="Evaluation">
               <h4>Evaluation</h4>
               <p>In order to comprehensively evaluate the performance of the deep learning model, this project executed both quantitative and qualitative evaluation. </p>
               <h5><b>Quantitative Evaluation</b></h5>
               <p>The quantitative evaluation used the loss and accuracy function of the Keras. For the loss function, this project used binary cross-entropy class, it used to calculate the loss between the true labels and the prediction labels. The accuracy function used accuracy class, which is used for evaluating the performance of the model. </p>
               <h5><b>Qualitative Evaluation</b></h5>
-              <p>In order to fairly evaluate the results, the test area were separated into the urban and rural areas, then both the deep learning model result and the ArcGIS tools result directly compared to the target image. The compared item are the five techniques used in building generalization process. Each compared result was graded in five levels (very good, good, fair, poor, very poor). Then the level was used to evaluate the performance of the deep learning model and the ArcGIS tools.</p>
+              <p>In order to fairly evaluate the results, the test area were separated into the urban and rural areas, then both the deep learning model result and the ArcGIS tools result directly compared to the target image. The compared item are the five techniques used in building generalization process (shown as Figure 6). Each compared result was graded in five levels (very good, good, fair, poor, very poor). Then the level was used to evaluate the performance of the deep learning model and the ArcGIS tools.</p>
               <p>The process of building generalization：<br>
               It involves removing too small buildings (eliminate), adjusting the location of buildings to avoid being too close to other features (displace), replacing neighboring buildings into a larger one (merge), enlarging the small building to ensure it is legible (exaggerate), simplifying the edge of the building to make it appear less cluttered (simplify).</p>
               <img src="assets\images\process.png" alt="The process of building generalization">
@@ -328,7 +331,33 @@ https://templatemo.com/tm-531-reflux
                     <td>Fair</td>
                   </tr>
                 </table>
-                <p style="padding: 10px 0px">Figure 11 shows the results of 1:50k in urban areas. In general, both the deep learning model and the ArcGIS tools had a great performance in eliminating technique (as the yellow block shown), both of them were above to remove the too-small buildings; and had a bad performance in displacing technique (as the orange block shown), buildings that needed to be adjusted could not be detected. For the deep learning model, the reason might be because the training data only had the building features. The displacing technique had relationships with other features, thus, without other features, the deep learning model could not learn this technique. For the ArcGIS tools, although the barrier features were imported, the displacement distance could not be set, so the model could not exactly predict the results. In exaggerating (as the red blocks shown), the deep learning model could detect some needed to be exaggerated, but the edge and the shape of the buildings performed worse, the exaggeration degree was not enough, the angle was rounded, and the edge was blurred. For the ArcGIS tools, because without this function, buildings that needed to be exaggerated preserved original areas. In the merging technique (as the green blocks shown), the deep learning model had a better performance than the ArcGIS tools. In the merging technique, both the deep learning model and the ArcGIS tools missed some buildings that needed to be merged, but the ArcGIS tools wrongly merged some buildings that are unneeded to be merged. As for simplifying technique (as the blue block shown), because the maps might not be produced by the same person, each person’s own aesthetics could lead to different results, the shape of buildings could not totally match the target image.  </p>
+                <div class="evaluate">
+                  <p style="margin-top: 20px;">Figure 11 shows the results of 1:50k in urban areas, the qualitative evaluation of the figure demonstrate below, and each color represents the color of the blocks on the figure.
+                    <li><b style="color:yellow;">Eliminate: </b> Both the deep learning model and the ArcGIS tools had a great performance, being able to remove the too-small buildings.</li>
+                    <li><b style="color:orange;">Displace: </b> Both the deep learning model and the ArcGIS tools had a bad performance, buildings that needed to be adjusted could not be detected. For the deep learning model, the reason might be because the training data only had the building features. The displacing technique had relationships with other features, thus, without other features, the deep learning model could not learn this technique. For the ArcGIS tools, although the barrier features were imported, the displacement distance could not be set, so the model could not exactly predict the results.</li>
+                    <li><b style="color:red;">Exaggerate: </b> For the deep learning model could detect some needed to be exaggerated, but the edge and the shape of the buildings performed worse, the size of the generalized building is still too small, the angle was rounded, and the edge was blurred; For the ArcGIS tools, because without this function, buildings that needed to be exaggerated preserved original areas.  </li>
+                    <li><b style="color:green;">Merge: </b>The deep learning model had a better performance than the ArcGIS tools. Both the deep learning model and the ArcGIS tools missed some buildings that needed to be merged, but the ArcGIS tools wrongly merged some buildings that are unneeded to be merged. </li>
+                    <li><b style="color:blue;">Simplify: </b> Because the maps might not be produced by the same person, each person’s own aesthetics could lead to different results, the shape of buildings could not totally match the target image.</li>
+                  </p>
+                  <img src="assets\images\fig11.png" alt="The results of 1:50k in urban areas.">
+                  <p style="text-align:center;">Figure 11. The results of 1:50k in urban areas.</p>
+                </div>
+
+                <div class="evaluate">
+                  <p style="margin-top: 20px;">Figure 12 shows the results of 1:50k in rural areas, in general, the results of the deep learning model and the ArcGIS tools are similar, detailed qualitative evaluation of the figure demonstrates below:
+                    <li><b style="color:yellow;">Eliminate: </b> Both the deep learning model and the ArcGIS tools worked well was able to remove the too-small buildings.</li>
+                    <li><b style="color:orange;">Displace: </b> Because the features were scattered and had a larger distance, in the test area, no buildings used this technique.</li>
+                    <li><b style="color:red;">Exaggerate: </b> Both the deep learning model and the ArcGIS tools worked badly, most of the buildings that needed to be exaggerated could not be detected, and some of them were removed in the process.  </li>
+                    <li><b style="color:green;">Merge: </b> Both the deep learning model and the ArcGIS tools had a moderate performance, being able to merge the neighbouring buildings but still some were missed or wrongly merged. </li>
+                    <li><b style="color:blue;">Simplify: </b> Both the deep learning model and the ArcGIS tools had a moderate performance, being able to maintain the main shape but having a slight difference from the target image.</li>
+                  </p>
+                  <img src="assets\images\fig12.png" alt="The results of 1:50k in rural areas.">
+                  <p style="text-align:center;">Figure 12. The results of 1:50k in rural areas.</p>
+                </div>
+
+
+
+
                 <p style="text-align:center;">Table 3. Quality Comparison of 1:50k result by building generalization process.</p>
                 <table>
                   <tr>

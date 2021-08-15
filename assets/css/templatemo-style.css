@@ -77,6 +77,13 @@ ul {
 ul li {
     display: inline-block;
 }
+.evaluate li {
+  text-align: justify;
+  text-justify:inter-ideograph;
+  margin-top: 10px;
+  margin-left : 2em;
+  text-indent : -2em ;
+}
 
 table{
   width: 100%;
@@ -98,6 +105,12 @@ td{
   border-width: 1px;
   border-style: solid;
   border-color: rgb(255,255,255,0.3);
+}
+
+hr{
+  background-color: rgb(255, 255, 255);
+  height: 1px;
+  border: none;
 }
 
 html {
