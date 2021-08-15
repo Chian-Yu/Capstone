@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+
+    <title>Using Deep Learning to Generalize Building in Urban and Rural Areas</title>
+<!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
+  </head>
+
+  <body>
+    <div id="page-wraper">
+      <!-- Sidebar Menu -->
+      <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+          <i class="fa fa-times" id="menu-close"></i>
+          <div class="container">
+            <div class="author-content">
+              <h4>Using Deep Learning to Generalize Building in Urban and Rural Areas</h4>
+              <span>By <b>Chian-Yu, Huang </b> August 16, 2021</span>
+
+            </div>
+            <nav class="main-nav" role="navigation">
+              <ul class="main-menu">
+                <li><a href="#section1">Introduction</a></li>
+                <li><a href="#section2">Research Question</a></li>
+                <li><a href="#section3">Method</a></li>
+                <li><a href="#section4">Discussion</a></li>
+                <li><a href="#section5">Clonclusion</a></li>
+              </ul>
+            </nav>
+            <div class="copyright-text">
+              <p>Copyright 2019 Reflux Design</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section about-me" data-section="section1">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Introduction</h2>
+            <div class="line-dec"></div>
+          </div>
+          <div class="left-image-post">
+            <div class="row">
+              <h4>What is Generalization?</h4>
+              <p>Generalization is the process that simplifying the complex and diverse geographic situation to a proper cartographic representation in a given map scale and purpose [<a href="https://cartographicperspectives.org/index.php/journal/article/view/cp68-roth-et-al" target="_blank">1</a>].</p>
+
+              <h4>No Perfect Automatic Generalization Model!</h4>
+              <p>The automatic generalization began with the development of geospatial information systems [<a href="http://yadda.icm.edu.pl/yadda/element/bwmeta1.element.baztech-258f4bf9-0621-4283-b99f-97213339cfda" target="_blank">2</a>]. However, because generalization rules sometimes need to adapt to the different situations in different areas, it is impossible to use a simple parameter well build the generalization model. To solve this problem, researchers keep adapting programming frameworks trying to make model replicate the act of the cartographers’ manually generalized process [<a href="https://www.mdpi.com/2220-9964/9/8/468/htm" target="_blank">3</a>].</p>
+
+              <h4>Problem: Building Generalization in the Urban and the Rural Areas</h4>
+              <p>In the past, some research manually pre-categorized the building, some based on the building type, or the density of the building automatically separated them into several groups, and each group uses different algorithms or rules [<a href="https://www.tandfonline.com/doi/abs/10.1080/13658810410001702021" target="_blank">4</a>, <a href="https://www.tandfonline.com/doi/abs/10.1080/13658810902798099" target="_blank">5</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0198971509000465" target="_blank">6</a>].  However, still some buildings were mistaken be automatically categorized then executed the wrong rules or the building on the edge of the map could not be well connected after generalized.</p>
+
+              <h4>Potential Agent: Deep Learning</h4>
+              <p>Recently, with the development of artificial intelligence and big data, deep learning has been applied in many fields, and being regarded as a great algorithm that can mimic human decision process [<a href="https://www.nature.com/articles/nature14539" target="_blank">7</a>]. Particularly in the classification and interpretation of images, the convolutional neural network (CNN) successfully detects the edge of irregular images and recognizes the different patterns [<a href="https://ieeexplore.ieee.org/abstract/document/8308186" target="_blank">8</a>], their better result confirmed that the deep learning approach better than traditional computer algorithms [<a href="https://www.sciencedirect.com/science/article/pii/S092427161630572X" target="_blank">9</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0924271619300437" target="_blank">10</a>].</p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section my-services" data-section="section2">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Research Question</h2>
+            <div class="line-dec"></div>
+            <span>
+              <li>Is deep learning able to produce appropriate simplification for building both in urban and rural areas?</li>
+              <li>Is deep learnings able to correctly generate rule-based and non-rule-based generalizations?</li>
+            </span>
+          </div>
+          <div class="row">
+            <h4>How to answer my research questions?</h4>
+            <h5><b>Using End to End Training Scheme</b></h5>
+            <p>End to End training means giving the model inputs and outputs data, expecting the learning algorithms can learn those unformulaic rules from the holistic data. The algorithm used in this model is deep learning, and the network architecture is the U-net structure. Input data is the ungeneralized maps and output data is the generalized maps. In order to train the model learning human cartographer generalized process, all data are manually existing maps.</p>
+            <img src="assets\images\endtoend.png" alt="end to end training scheme">
+            <h5><b>Building Control Group to Evaluate</b></h5>
+            <p>This project built a control group to compare and evaluate deep learning results. The control group used commercial software to generate generalized output and it represents nowadays commonly used generalized results which under machine processes. The two outputs were separately compared with the fully manual generalized data, then evaluated the two compared results.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section my-work" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Method</h2>
+            <div class="line-dec"></div>
+            <span>In this section, details of the execution are explained in four stages: data gathering and preparation, developing U-net structure and training, generating control group, and evaluation.</span>
+          </div>
+          <div class="row">
+            <div class="Data Gathering and Preparation">
+              <h4>Data Gathering and Preparation</h4>
+              <h5><b>Map Scales</b></h5>
+              <p>This project executed two map scales generalization, from 1:25k to 1:50k, and from 1:50k to 100k, so there are three scales maps needed to be gathered.</p>
+              <p style="text-align: center; color: rgba(255,255,255,0.5); line-height: 5px;">The needed map scales for each model</p>
+              <table>
+                <tr>
+                  <th colspan="2">Dataset</th>
+                  <th>1:25k to 1:50k</th>
+                  <th>1:50k to 1:100k</th>
+                </tr>
+                <tr>
+                  <th rowspan="2">Training Data</th>
+                  <th>Input</th>
+                  <td>1:25k</td>
+                  <td>1:50k</td>
+                </tr>
+                <tr>
+                  <th>Output</th>
+                  <td>1:50k</td>
+                  <td>1:100k</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Test Data</th>
+                  <td>1:25k</td>
+                  <td>1:50k</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Target Data</th>
+                  <td>1:50k</td>
+                  <td>1:100k</td>
+                </tr>
+              </table>
+              <h5 style="padding: 30px 0px 0px 0px"><b>Data Sources</b></h5>
+              <p>The used maps were Taiwan Mid-to-small Topographic Maps which were published in 2018 and manually generalized by human cartographers. All maps can be downloaded at <a href="https://maps.nlsc.gov.tw/MbIndex_qryPage.action?fun=8" target="_blank">the National Land Surveying and Mapping Center Taiwan MAP Service</a>. As the maps are provided in vector format, they were be rasterized in 1 m × 1 m grids image.</p>
+              <h5><b>Select Areas</b></h5>
+              <p>The selected area is around Taichung City, Taiwan that covers both urban areas and rural areas. This area was generated into a 50,893 pixel × 29,696 pixel building map and partitioned into 5,742 tiles (512pixel × 512 pixel) without overlaps. The blue block area is used in the training process, and the red block area is used for testing. Red block is adjacent and without any overlap to the blue block.</p>
+              <img src="assets\images\selectarea.png" alt="Select area">
+            </div>
+            <div class="Developing U-net Structure and Training" style="padding:40px 0px;">
+              <h4>Developing U-net Structure and Training</h4>
+              <h5><b>U-net Structure</b></h5>
+              <p>U-net [<a href="https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28">11</a>] structure is a convolutional network architecture that is firstly applied in biomedical image segmentation with binary labels. It is symmetric and can be divided into an encoder-decoder path.The encoder path is the left half in the architecture diagram. Each layer consists of two repeated applications of 3 x 3 convolutions and rectified linear unit (ReLU), followed by a 2 x 2 max-pooling for downsampling. In this process, it extracts more feature channels and reduces the size of the image. The decoder path is the right half, each layer consisted of a 2 x 2 up-convolution for upsampling, followed by two 3 x 3 convolutions, which each followed by a ReLU. In this process, it reduces the feature channels and recovers the size of the image.</p>
+              <img src="assets\images\unet.png" alt="U-net Structure">
+              <p style="text-align: center; color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" target="_blank">https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/</a></p>
+              <p>Different from the size of the input image in the original paper, that is 572 x 572 x 3, the size of the input image used in this project is 512 x 512 x 3, and other core components of the structure kept the same. The training was used 5,445 image tiles (about 90%) as the training dataset and 297 image tiles (about 10%) as the validation dataset and scheduled for 100 epochs with batch size 32. The loss function selected binary cross-entropy and used Adam as the optimizer. In order to have a better generalization result and prevent overfitting the training data, the model applied three techniques. First, dropout was set as 0.05 to randomly drop out neural nodes during training [<a href="https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf?utm_campaign=buffer&utm_content=buffer79b43&utm_medium=social&utm_source=twitter.com" target="_blank">12</a>, <a href="https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/" target="_blank">13</a>].
+              Second, the training model automatically stopped when the value of the cost function for the cross-validation data did not improve over ten epochs [<a href="https://www.sciencedirect.com/science/article/pii/S0893608098000100" target="_blank">14</a>] Third, randomly given rotation angles, horizontal flip, and vertical flip were used in data augmentation [<a href="https://arxiv.org/abs/1712.04621" target="_blank">15</a>]. Only when the performance of the training data was the best, this model saved and used in the evaluation. </p>
+              <p>Code used to define the U-net model:</p>
+              <script src="https://gist.github.com/Chian-Yu/536f8b46fd2a33e42387597512ecb5bc.js"></script>
+            </div>
+            <div class="Generating Control Group">
+              <h4>Generating Control Group</h4>
+              <p>The commercial generalization software used in this project is ArcGIS (Version 10.8.1). ArcGIS has three generalized tools, “Delineate Built-Up Area”, "Aggregate Polygons", and “Simplify Building”.</p>
+              <h5><b>Delineate Built-Up Area</b></h5>
+              <p>This tool is used to merge densely clustered buildings into a large building polygon. Buildings in the input features layer are clustered together according to the giving grouping distance parameter, then merges the clustered buildings into a new building polygon. It has a better performance on merge neighbouring buildings, but in the simplifying of the edge of the building performed badly.</p>
+              <img src="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/GUID-B21B9F22-61A8-4975-85D4-9B68C8850228-web.png" alt="Delineate Built-Up Area example">
+              <p style="color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/delineate-built-up-areas.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/delineate-built-up-areas.htm</a></p>
+              <h5><b>Aggregate Polygons</b></h5>
+              <p>The use of Aggregate Polygons is similar to Delineate Built-Up Area. By giving the aggregation distance value, the tool merges the neighbouring building that closer than the given distance together. But the orthogonality option and the function of importing barrier features, make this tool have a better performance of the simplifying edge, and avoid merging the neighbouring buildings that have barriers across.</p>
+              <img src="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/GUID-7C771F8C-2E59-4DE5-9E46-E74A1586346D-web.gif" alt="Aggregate Polygons example">
+              <p style="color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/aggregate-polygons.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/aggregate-polygons.htm</a></p>
+              <h5><b>Simplify Building</b></h5>
+              <p>This tool is used to simplify the boundary of building polygons and keep the essential shape and size of the buildings, and with the optional minimum area parameter to delete the small buildings. It has a great performance on simplification the edge of the buildings, but it did not have the function to merge the building together.</p>
+              <img src="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/GUID-46B1682E-6993-47D0-AAED-A7D5F0F3669A-web.gif" alt="Simplify Building example">
+              <p style="color: rgba(255,255,255,0.5); line-height: 5px;">Sources:<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm" target="_blank">https://desktop.arcgis.com/en/arcmap/10.3/tools/cartography-toolbox/simplify-building.htm</a></p>
+              <p>Each tool has its own advantages and disadvantages, but none of them can contain all the process in the building generalization. Thus, this project used two tools to produce generalized results. First using Aggregate Polygons to merge the neighbouring building, then and Simplify Building to have a better simplified edge and eliminate small buildings.</p>
+            </div>
+            <div class="Evaluation" style="padding:40px 0px;">
+              <h4>Evaluation</h4>
+              <p>In order to comprehensively evaluate the performance of the deep learning model, this project executed both quantitative and qualitative evaluation. </p>
+              <h5><b>Quantitative Evaluation</b></h5>
+              <p>The quantitative evaluation used the loss and accuracy function of the Keras. For the loss function, this project used binary cross-entropy class, it used to calculate the loss between the true labels and the prediction labels. The accuracy function used accuracy class, which is used for evaluating the performance of the model. </p>
+              <h5><b>Qualitative Evaluation</b></h5>
+              <p>In order to fairly evaluate the results, the test area were separated into the urban and rural areas, then both the deep learning model result and the ArcGIS tools result directly compared to the target image. The compared item are the five techniques used in building generalization process. Each compared result was graded in five levels (very good, good, fair, poor, very poor). Then the level was used to evaluate the performance of the deep learning model and the ArcGIS tools.</p>
+              <p>The process of building generalization：<br>
+              It involves removing too small buildings (eliminate), adjusting the location of buildings to avoid being too close to other features (displace), replacing neighboring buildings into a larger one (merge), enlarging the small building to ensure it is legible (exaggerate), simplifying the edge of the building to make it appear less cluttered (simplify).</p>
+              <img src="assets\images\process.png" alt="The process of building generalization">
+              <p>Then visually examining and qualitatively describing each the compare item in urban and the rural areas in the two scales separately, illustrating the generalized situation and exploring the reason for the inappropriate generalized results.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-me" data-section="section4">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Discussion</h2>
+            <div class="line-dec"></div>
+            <span>In this section, details of the quantitative and qualitative evaluation results were be discussed first. Next, for the objective of this project discussing whether the results were expected.</span>
+          </div>
+          <div class="row">
+            <div class="right-content">
+              <!-- <div class="container">
+                <form id="contact" action="" method="post">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="name"
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          placeholder="Your name..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input
+                          name="email"
+                          type="text"
+                          class="form-control"
+                          id="email"
+                          placeholder="Your email..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="subject"
+                          type="text"
+                          class="form-control"
+                          id="subject"
+                          placeholder="Subject..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <textarea
+                          name="message"
+                          rows="6"
+                          class="form-control"
+                          id="message"
+                          placeholder="Your message..."
+                          required=""
+                        ></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="button">
+                          Send Message
+                        </button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+      //according to loftblog tut
+      $(".main-menu li:first").addClass("active");
+
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
+        }
+      };
+
+      var checkSection = function checkSection() {
+        $(".section").each(function() {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+      });
+
+      $(window).scroll(function() {
+        checkSection();
+      });
+    </script>
+  </body>
+</html>
